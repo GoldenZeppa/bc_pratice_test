@@ -87,35 +87,56 @@ let dogs = [
     }
 ]
 
+
+
 // 1.
-var greeting;
+var greeting = function(greeting, location, time) { 
+    console.log(greeting + " " + location + " " + time);
+};
 
 
 
 // 2.
-var contestants;
+var contestants = function() {
+    return dogs.length;
+};
 
 
 
 // 3.
-var filterSpecies;
+var filterSpecies = dogs.filter(animal => animal.species.toLowerCase() === 'dog');
 
 
 
 // 4. 
-var dogContestants;
+var dogContestants = [...filterSpecies];
 
 
 
 // 5. 
-var dogsWithClasses;
+var dogsWithClasses = dogContestants.map(dog => {
+    if (dog.weight >= 0 && dog.weight <= 10) {
+        dog.class = "red";
+    } else if (dog.weight >= 11 && dog.weight <= 20) {
+        dog.class = "yellow";
+    } else if (dog.weight > 21) {
+        dog.class = "green";
+    }
+    return dog;
+});
     
 
 
 // 6.
-var firstInClass;
+var firstInClass = function(dogArray) {
+    return dogArray.length === 1 ? dogArray[0] : {...dogArray[0], ...firstInClass(dogArray.slice(1))};
+};
 
 
 
 // 7.
-var votes;
+var votes = dogs.reduce((sum, animal) => {
+    return sum + animal.votes
+}, 0);
+
+
